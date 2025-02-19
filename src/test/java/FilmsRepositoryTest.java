@@ -3,9 +3,9 @@ import org.junit.jupiter.api.Test;
 
 public class FilmsRepositoryTest {
 
-    FilmsItem item1 = new FilmsItem(1, "Film1", "Genre1", 2025);
-    FilmsItem item2 = new FilmsItem(2, "Film2", "Genre2", 2025);
-    FilmsItem item3 = new FilmsItem(3, "Film3", "Genre3", 2025);
+    FilmsItem item1 = new FilmsItem(1, "Film1", "Genre1", 2025, 230000000);
+    FilmsItem item2 = new FilmsItem(2, "Film2", "Genre2", 2025, 553000000);
+    FilmsItem item3 = new FilmsItem(3, "Film3", "Genre3", 2025, 1500000000);
 
     @Test
     public void testRemoveByID() {
@@ -38,6 +38,18 @@ public class FilmsRepositoryTest {
         FilmsItem[] actual = repo.findAll();
         Assertions.assertArrayEquals(expected, actual);
     }
+
+
+    private FilmsItem[] findAllFilms() {
+        FilmsRepository repo = new FilmsRepository();
+        repo.save(item1);
+        repo.save(item2);
+        repo.save(item3);
+        return repo.findAll();
+
+    }
+
+
     @Test
     public void testFindByID() {
         FilmsRepository repo = new FilmsRepository();

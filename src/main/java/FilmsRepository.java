@@ -1,5 +1,3 @@
-import java.util.Arrays;
-
 public class FilmsRepository {
     private FilmsItem[] items = new FilmsItem[0]; //
 
@@ -52,9 +50,6 @@ public class FilmsRepository {
        //return Arrays.copyOf(tmp, copyToIndex)  ;
 
     }
-
-
-
 
 
 }

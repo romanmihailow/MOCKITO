@@ -1,5 +1,4 @@
 public class FilmsManager { //Создание класса
-
     private FilmsRepository repo;
 
     public FilmsManager(FilmsRepository repo) {
@@ -10,6 +9,7 @@ public class FilmsManager { //Создание класса
         repo.save(item);
     }
 
+
     public void removeID(FilmsItem item) {
         repo.removeByID(item.getId());
     }
@@ -18,25 +18,30 @@ public class FilmsManager { //Создание класса
         repo.findByID(item.getId());
     }
 
-    public void findAllFilms(FilmsItem item) {
+    public void findAllFilms2(FilmsItem item) {
         repo.findAll();
     }
 
     public void removeAllFilms(FilmsItem item) {
         repo.removeAll();
     }
+    public FilmsItem[] findAllFilmsReversed() {
+        FilmsItem[] all = repo.findAll();
+        FilmsItem[] reversed = new FilmsItem[all.length];
+        for (int i = 0; i < all.length; i++) {
+            reversed[i] = all[all.length - 1 - i];
+        }
+        return reversed;
+    }
 
+    public int getTotalBoxOffice () {
+        int sum = 0;
+        for (FilmsItem item : repo.findAll()) {
+            sum = sum + item.getBoxOfficee();
+        }
+        return sum;
 
-    //    private String[] films = new String[0]; //Объявление массива
-//    private int limit; //Создание переменной
-
-//    public FilmsManager() {
-//        this.limit = 10; //Установление лимита 10 фильмов по умолчанию
-//    }
-//
-//    public FilmsManager(int limit) { //
-//        this.limit = limit; //Создание метода для изменения лимита
-//    }
+    }
 
 
 }
